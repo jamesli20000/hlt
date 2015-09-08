@@ -522,7 +522,7 @@ int main(int argc, char*argv[])
                 updateRequestCounter();
                 g_totalFailUnexp++;  
             }
-            if ( g_allResponseCounter >= g_nextLevelResponse )
+            if ( g_allResponseCounter > g_nextLevelResponse )
             {
                 ERROR("%d request completed\n", g_nextLevelResponse);
                 g_nextLevelResponse += g_total_n / 10;
