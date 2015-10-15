@@ -164,7 +164,7 @@ build_request(char *hostname, char *request_path, eHTTP_METHOD method, char*cont
     {
         sprintf(request_buffer, "GET %s HTTP/1.0\r\n"
                                 "Host: %s\r\n"
-                                "Connection: close\r\n\r\n", 
+                                "Connection: keep-alive\r\n\r\n", 
                                 request_path, hostname);
     }else if( HTTP_POST == method )
     {
@@ -179,6 +179,7 @@ build_request(char *hostname, char *request_path, eHTTP_METHOD method, char*cont
         fseek(f, 0, SEEK_SET);
         sprintf(request_buffer, "POST %s HTTP/1.0\r\n"
                                 "Content-Type: text/plain\r\n"
+                                "Connection: keep-alive\r\n"
                                 "Content-Length: %d\r\n\r\n",
                                 request_path, len);
         char*buffer = malloc(len+strlen(request_buffer)+1);
